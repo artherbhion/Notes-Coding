@@ -1,0 +1,95 @@
+﻿Day,Problem Name,Topic,Difficulty,Language,LOGIC,CODE
+" 1",Consonants Count in Sliding Window,"Arrays, String",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=5NPnoYDusAw,https://www.youtube.com/watch?v=DZUA8GDth_8
+2,Equal Count - Vowels & Consonants,"Arrays, String",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=e895nA4hPC0&t=3s,https://www.youtube.com/watch?v=e895nA4hPC0&t=3s
+3,Path - Top Left to Bottom Right,"Dynamic Programming, Loops",⭐⭐⭐⭐⭐,java,https://youtu.be/weE-o93MqOc?si=4_WvlwTDgBdRlbb4,https://youtu.be/WP17lk8aqT4?si=H3t3YNQmFtFJUzAO
+4,Path - Bottom Left to Top Right,"Dynamic Programming, Loops",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=ry2fQhsvWko,https://www.youtube.com/watch?v=ry2fQhsvWko
+5,Maximum Sum of Sub-Arrays,"Arrays, Two pointer",⭐⭐⭐,java,https://www.youtube.com/watch?v=YxiRc60kghI&t=8s,https://www.youtube.com/watch?v=FWTqoQO1YFA
+6,Array sum Target,"Arrays, Two pointer",⭐⭐⭐,java,https://www.youtube.com/watch?v=OpJmdGwzsAM&t=7s,https://www.youtube.com/watch?v=c6007z_2oj4
+7,Collect Max from a Given Cell,"2D Matrix, Dynamic Programming",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=UuNzFOj9taM&t=1s,https://www.youtube.com/watch?v=YcAAjHNgDsc
+8,Minimum Sum Of SubArrays,Dynamic Programming,⭐⭐⭐,java,https://www.youtube.com/watch?v=WmTagkEDj9o,https://www.youtube.com/watch?v=WmTagkEDj9o
+9,BoyIceCream,Dynamic Programming,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=hi-2KbiAKck&t=2s,https://www.youtube.com/watch?v=nYVID5mf1QI
+10, KthDayIcecream,Dynamic Programming,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=j7dsrZ0a9fs,https://www.youtube.com/watch?v=1bMFUJcigRw
+11,N Bishops,"2D Matrix, backtracking",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=sDqlDgDsWm0,https://www.youtube.com/watch?v=1lGI9QLGf3Q&t=6s
+12.1,"Stack ",Stack /Queue,⭐⭐,java,https://www.youtube.com/watch?v=daHp_G7eDS8&t=1s,
+12.2,Remove Adjacent,Stack /Queue,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=s9sVtzW97Ek&t=1s,https://www.youtube.com/watch?v=E_NoLTyWXYQ
+13,Majority Element,Arrays,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=fdDkTJVKzeI,https://www.youtube.com/watch?v=9Q2eYVn9EOc
+14,Array Next Greater,"Arrays, Stack /Queue",⭐⭐⭐,java,https://www.youtube.com/watch?v=0CuD-TV7cvw,https://www.youtube.com/watch?v=gWEDQFPwYJc
+15,MinOperationsXtoY,"Arrays, Greedy, Loops",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=PuZxIcD_74A&t=3s,https://www.youtube.com/watch?v=2c-7zQE2iQU&t=141s
+16,MinOperations0toN,"Arrays, Greedy, Loops",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=4yx56XLZeHc,https://www.youtube.com/watch?v=5ODK6muM04k
+17,CollectMaxPoints,"2D Matrix, Dynamic Programming",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=Fjt5mPuTEtI,https://www.youtube.com/watch?v=vI7ao6i4THY
+18,CollectMaxStartingPoint,"2D Matrix, Dynamic Programming",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=UuNzFOj9taM,https://www.youtube.com/watch?v=YcAAjHNgDsc
+19,CharsinNStrings,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=PReV0m4msCA,https://www.youtube.com/watch?v=K5NG2Rdtbu0
+20,Staircase,"Dynamic Programming, Loops",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=oE-QLYhhaRc,https://www.youtube.com/watch?v=KO79BUc4tMg&t=1s
+21,SubArrSum TwoPointer,"Arrays, Two pointer",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=OpJmdGwzsAM&t=7s,https://www.youtube.com/watch?v=c6007z_2oj4
+22,N Rooks,"2D Matrix, backtracking",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=uDvsL9twFWU&t=2s,
+23,Characters in at least N-1 String Values,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=nTkVZAdv0ok,
+24,String - Pattern Count KMP Algorithm,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=S50mCVovRwQ&t=1s,https://www.youtube.com/watch?v=A6qCbbaoO84
+25,Valid Mix of String Values,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=F5AnXSpwYG4&t=10s,https://www.youtube.com/watch?v=NRm7bdHDhOs&t=1s
+26,Longest Common Signal,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=oQbU2ws1lWg,https://www.youtube.com/watch?v=p7n6pxLVo3s
+27,Longest Substring - Equal Alphabets & Digits,"Arrays, String",⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=R3KFda5KpEY&t=2s,https://www.youtube.com/watch?v=KCKZ2xkQgM0
+28,Robot - Stair Climbing,"Dynamic Programming, Loops",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=oE-QLYhhaRc,https://www.youtube.com/watch?v=KO79BUc4tMg
+29,Stair Climbing - Damaged Stairs,"Dynamic Programming, Loops",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=xXn-rTWzpHs,
+30,Permutations - String Characters,"String, backtracking",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=4QoGYsZOeKA&t=3s,https://www.youtube.com/watch?v=eQ4HdQlUVjc
+31,Valid String Mix Reverse,"String, backtracking",⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=xemuuSGVLwU,
+32,Social Media Leader,"2D Matrix, Dynamic Programming",⭐⭐⭐,java,https://www.youtube.com/watch?v=Nafe075kYT8,https://www.youtube.com/watch?v=bkaB6fCXj14
+33,Stair Climbing - Slippery stairs,,,java,https://www.youtube.com/watch?v=WLHVXn0tlzk,https://www.youtube.com/watch?v=N4nAZmHmFzA
+34,Path Exists from Source to Destination Cell,DFS,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=vwyE4puUpw0,https://www.youtube.com/watch?v=BRpSkgvb2OU&t=1s
+35,Island Count,DFS,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=Srq5PsC9M-c&t=2s,https://www.youtube.com/watch?v=8GoKStp3Bxw&t=2s
+36,Largest Possible Odd Integer,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=4bhOb1kgbCM,https://www.youtube.com/watch?v=zRlyOhLxCro
+37,Stock Buy & Sell Once - Maximum Profit,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=tXf4Vml2FYM,https://www.youtube.com/watch?v=KwibR_lHWPY
+38,Stock Buy & Sell Multiple Times - Maximum Profit,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=ISwjfVrNOWQ,https://www.youtube.com/watch?v=JQaNfHTeYv8
+39,Maximum Sum - K*K Sub-Matrix,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=c033YjJMO0w,https://www.youtube.com/watch?v=8lWruKXUcVU&t=2s
+40,Minimum Sum - K*K Sub-Matrix,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=gCwlR3msSEM,
+41,Smallest Possible Odd Integer,,⭐⭐⭐,java,https://www.youtube.com/watch?v=gjW1nuv6tno,
+42,Combination Zero Sum,,⭐⭐⭐,java,https://www.youtube.com/watch?v=FsW_AJZxD1w&t=3s,
+43,DP - Array Elements Equal Left & Right Sum,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=F1SKWOg6GjA,https://www.youtube.com/watch?v=KkuRz_eIc4Q
+44,Iterations Count All Zero,,⭐⭐⭐,java,https://www.youtube.com/watch?v=ZeLqTTEVlTc,https://www.youtube.com/watch?v=6Bg4wugczH0
+45,Minimum Swaps - Ascending Order,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=B8GHzNCwlzs&t=27s,https://www.youtube.com/watch?v=NyKV8IgB8Mc
+46,Minimum Swaps - Descending Order,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=ZSAJLor3hSI,
+47,Non-Measurable Smallest Weight,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=xhUaf69VB9Y,https://www.youtube.com/watch?v=4sBI8lhJzXw
+48,Permutation Nearest Value,,⭐⭐,java,https://www.youtube.com/watch?v=W04c2M5h5hI,https://www.youtube.com/watch?v=x0kCwTkeTG0
+49,String Characters - Combinations Sorted,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=dfKB6oVb0DM&t=1s,https://www.youtube.com/watch?v=q2tcqbCDvlY
+50,Sudoku Validity,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=wVnvzXClo8Y,https://www.youtube.com/watch?v=479p377yrE4
+51,Solve Sudoku,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=ziChV7_MFos,https://www.youtube.com/watch?v=2MWRITy9_Ac
+52,Word Search in Matrix,,⭐⭐⭐,java,https://www.youtube.com/watch?v=YGk1yAeOUsw&t=22s,https://www.youtube.com/watch?v=_GIT1qHUy8Y&t=10s
+53,Selling Wine Bottles,,⭐⭐⭐,java,https://www.youtube.com/watch?v=EEU6QV3tQ5k,https://www.youtube.com/watch?v=6SADv2EaoIw
+54,Street Travel Count,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=wdeJvXF6YRY&t=1s,https://www.youtube.com/watch?v=2Xc955dNIys
+55,Vendor Maximum Profit,,⭐⭐⭐,java,https://www.youtube.com/watch?v=kpoXaH_ZRbc,https://www.youtube.com/watch?v=_JGgKyUnQWA
+56,Corona Virus,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=Dfaj2vA6Vi0&t=8s,https://www.youtube.com/watch?v=Cs9P7CP-JFI&t=13s
+57,Intelligent Chef,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=QQHndo3l_lU,https://www.youtube.com/watch?v=WRim5PcB6gs
+58,Largest Square Sub Matrix with 1s,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=rdig1RbL3xs,https://www.youtube.com/watch?v=TdWHbwdjI24
+59,Max Coins - Bottom Row Cannot Pick,,⭐⭐,java,https://www.youtube.com/watch?v=JMRDYzTB4iE,https://www.youtube.com/watch?v=2vkj5ZcoykQ
+60,Find Single Value Repeated Odd Times,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=SuXK6X4JgbQ,https://www.youtube.com/watch?v=W-8zZe1KQQ4
+61,Toll Gate Collection,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=x0wY2-S5-Rs&t=6s,https://www.youtube.com/watch?v=7GoR_NOgkMA
+62,Word Break,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=q85GqO2FbdI,https://www.youtube.com/watch?v=c0UUcHNW4Ns
+63,Wildcard Pattern Matching,,⭐⭐⭐,java,https://www.youtube.com/watch?v=g7KXWiiOtbA&t=8s,https://www.youtube.com/watch?v=BotnSue5_eA
+64,Pet Store Dogs,,⭐⭐⭐,java,https://www.youtube.com/watch?v=CMu0yUCqgAs,https://www.youtube.com/watch?v=8TcNk0E2VN4
+65,Minimum Edit Distance Two Strings,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=lizkwM1gmw4,https://www.youtube.com/watch?v=0xLa7W6FFsw
+66,Single Source Shortest Path,,⭐⭐⭐,java,https://www.youtube.com/watch?v=5YHc2sR8S4o,https://www.youtube.com/watch?v=L9hTD6Ck7Y4
+67,Photograph Height,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=fPWBHcIXifs,https://www.youtube.com/watch?v=zM56le6VErA
+68,Minimum Jumps to Reach End,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=JUH4Ayb373g,https://www.youtube.com/watch?v=Yhxzu9S75Bw
+69,Browsing Center Computers,,⭐⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=y1tyNq0eKaw,https://www.youtube.com/watch?v=01du4OO3RXA&t=2s
+70,LongestPalindromicSubString,,⭐⭐,java,,https://www.youtube.com/watch?v=tMCQB5r2swY&t=235s
+71,Palindromic Partition,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=HK1qCy6FYdo,https://www.youtube.com/watch?v=1ajrr9Yy-PU&t=5s
+72,String Permutation,,⭐⭐⭐⭐,java,https://www.youtube.com/watch?v=dmzPo0meGyQ,https://www.youtube.com/watch?v=iSj7a1Qt6cc&t=226s
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+" ",,,,,,
+,,,,,,
+,,,,,,
