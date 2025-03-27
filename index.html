@@ -1,57 +1,685 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Arther's Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <div class="Calculator">
-            <form>
-                <div class="display">
-                    <input type="text" name="display">
-                </div>
-                <div>
-                    <input type="button" value="AC" onclick="display.value=''" class="operator">
-                    <input type="button" value="DEL" onclick="display.value=display.value.toString().slice(0,-1)" class="operator">
-                    <input type="button" value="." onclick="display.value+='.'" class="operator">
-                    <input type="button" value="/" onclick="display.value+='/'"class="operator">
-                </div>
-                <div>
-                    <input type="button" value="7" onclick="display.value+='7'">
-                    <input type="button" value="8" onclick="display.value+='8'">
-                    <input type="button" value="9" onclick="display.value+='9'">
-                    <input type="button" value="*" onclick="display.value+='*'" class="operator">
-                </div>
-                <div>
-                    <input type="button" value="4" onclick="display.value+='4'">
-                    <input type="button" value="5" onclick="display.value+='5'">
-                    <input type="button" value="6" onclick="display.value+='6'">
-                    <input type="button" value="-" onclick="display.value+='-'" class="operator">
-                </div>
-                <div>
-                    <input type="button" value="1" onclick="display.value+='1'">
-                    <input type="button" value="2" onclick="display.value+='2'">
-                    <input type="button" value="3" onclick="display.value+='3'">
-                    <input type="button" value="+" onclick="display.value+='+'" class="operator">
-                </div>
-                <div>
-                    <input type="button" value="00" onclick="display.value+='00'" >
-                    <input type="button" value="0" onclick="display.value+='0'">
-                    <input type="button" value="=" class="equal" onclick="display.value=eval(display.value)" id="equal">
-                  
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
-<script>
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            const equalButton = document.getElementById('equal');
-            equalButton.click();
-        }
-    });
-</script>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Arther’s Coding Notes  2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1958880d-9596-80cb-b9f2-f7117ba1f285" class="page sans"><header><img class="page-cover-image" src="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/6639809_(1).jpg" style="object-position:center 40.15%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/th.jpg"/></div><h1 class="page-title">Arther’s Coding Notes  2</h1><p class="page-description"></p></header><div class="page-body"><div id="1958880d-9596-81fe-9958-dd84dcf6eb92" class="collection-content"><h4 class="collection-title">Days</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Day</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Problem Name</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Topic</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Difficulty</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Language</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>LOGIC</th><th><span class="icon property-icon"><svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>CODE</th></tr></thead><tbody><tr id="1958880d-9596-8111-b97e-c94737647f66"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/1%201958880d95968111b97ec94737647f66.html"><span class="icon">🍀</span> 1</a></td><td class="cell-tToJ">Consonants Count in Sliding Window</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=5NPnoYDusAw" class="url-value">https://www.youtube.com/watch?v=5NPnoYDusAw</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=DZUA8GDth_8" class="url-value">https://www.youtube.com/watch?v=DZUA8GDth_8</a></td></tr><tr id="1958880d-9596-81c2-bad9-c36e5badf9dd"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/2%201958880d959681c2bad9c36e5badf9dd.html"><span class="icon">🍀</span>2</a></td><td class="cell-tToJ">Equal Count - Vowels &amp; Consonants</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=e895nA4hPC0&amp;t=3s" class="url-value">https://www.youtube.com/watch?v=e895nA4hPC0&amp;t=3s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=e895nA4hPC0&amp;t=3s" class="url-value">https://www.youtube.com/watch?v=e895nA4hPC0&amp;t=3s</a></td></tr><tr id="1958880d-9596-810c-9dad-e95a29581570"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/3%201958880d9596810c9dade95a29581570.html"><span class="icon">🍀</span>3</a></td><td class="cell-tToJ">Path - Top Left to Bottom Right</td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://youtu.be/weE-o93MqOc?si=4_WvlwTDgBdRlbb4" class="url-value">https://youtu.be/weE-o93MqOc?si=4_WvlwTDgBdRlbb4</a></td><td class="cell-jbJh"><a href="https://youtu.be/WP17lk8aqT4?si=H3t3YNQmFtFJUzAO" class="url-value">https://youtu.be/WP17lk8aqT4?si=H3t3YNQmFtFJUzAO</a></td></tr><tr id="1958880d-9596-8129-aa5a-e4e856b8e7b8"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/4%201958880d95968129aa5ae4e856b8e7b8.html"><span class="icon">🍀</span>4</a></td><td class="cell-tToJ">Path - Bottom Left to Top Right</td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=ry2fQhsvWko" class="url-value">https://www.youtube.com/watch?v=ry2fQhsvWko</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=ry2fQhsvWko" class="url-value">https://www.youtube.com/watch?v=ry2fQhsvWko</a></td></tr><tr id="1958880d-9596-81e4-8f96-e264719cfb59"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/5%201958880d959681e48f96e264719cfb59.html"><span class="icon">🍀</span>5</a></td><td class="cell-tToJ">Maximum Sum of Sub-Arrays</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-red">Two pointer</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=YxiRc60kghI&amp;t=8s" class="url-value">https://www.youtube.com/watch?v=YxiRc60kghI&amp;t=8s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=FWTqoQO1YFA" class="url-value">https://www.youtube.com/watch?v=FWTqoQO1YFA</a></td></tr><tr id="1958880d-9596-8124-86f7-f5e8f6570538"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/6%201958880d9596812486f7f5e8f6570538.html"><span class="icon">🍀</span>6</a></td><td class="cell-tToJ">Array sum Target</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-red">Two pointer</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=OpJmdGwzsAM&amp;t=7s" class="url-value">https://www.youtube.com/watch?v=OpJmdGwzsAM&amp;t=7s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=c6007z_2oj4" class="url-value">https://www.youtube.com/watch?v=c6007z_2oj4</a></td></tr><tr id="1958880d-9596-81c4-a143-c9c701297901"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/7%201958880d959681c4a143c9c701297901.html"><span class="icon">🍀</span>7</a></td><td class="cell-tToJ">Collect Max from a Given Cell</td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=UuNzFOj9taM&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=UuNzFOj9taM&amp;t=1s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=YcAAjHNgDsc" class="url-value">https://www.youtube.com/watch?v=YcAAjHNgDsc</a></td></tr><tr id="1958880d-9596-8101-8319-d78de1521d09"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/8%201958880d959681018319d78de1521d09.html"><span class="icon">🍀</span>8</a></td><td class="cell-tToJ">Minimum Sum Of SubArrays</td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=WmTagkEDj9o" class="url-value">https://www.youtube.com/watch?v=WmTagkEDj9o</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=WmTagkEDj9o" class="url-value">https://www.youtube.com/watch?v=WmTagkEDj9o</a></td></tr><tr id="1958880d-9596-8170-8352-fda93a5cc082"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/9%201958880d959681708352fda93a5cc082.html"><span class="icon">🍀</span>9</a></td><td class="cell-tToJ"><strong>BoyIceCream</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=hi-2KbiAKck&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=hi-2KbiAKck&amp;t=2s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=nYVID5mf1QI" class="url-value">https://www.youtube.com/watch?v=nYVID5mf1QI</a></td></tr><tr id="1958880d-9596-81e5-8644-e2615a7be7ad"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/10%201958880d959681e58644e2615a7be7ad.html"><span class="icon">🍀</span>10</a></td><td class="cell-tToJ"><strong> KthDayIcecream</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=j7dsrZ0a9fs" class="url-value">https://www.youtube.com/watch?v=j7dsrZ0a9fs</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=1bMFUJcigRw" class="url-value">https://www.youtube.com/watch?v=1bMFUJcigRw</a></td></tr><tr id="1958880d-9596-81ac-bca5-d64741db2280"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/11%201958880d959681acbca5d64741db2280.html"><span class="icon">🍀</span>11</a></td><td class="cell-tToJ">N Bishops</td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-brown">backtracking</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=sDqlDgDsWm0" class="url-value">https://www.youtube.com/watch?v=sDqlDgDsWm0</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=1lGI9QLGf3Q&amp;t=6s" class="url-value">https://www.youtube.com/watch?v=1lGI9QLGf3Q&amp;t=6s</a></td></tr><tr id="1958880d-9596-813f-9a88-e44840e44cda"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/12%201%201958880d9596813f9a88e44840e44cda.html"><span class="icon">🍀</span>12.1</a></td><td class="cell-tToJ">Stack </td><td class="cell-lCd_"><span class="selected-value select-value-color-gray">Stack /Queue</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-blue">⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=daHp_G7eDS8&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=daHp_G7eDS8&amp;t=1s</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-81c6-914a-d08f2a0640d1"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/12%202%201958880d959681c6914ad08f2a0640d1.html"><span class="icon">🍀</span>12.2</a></td><td class="cell-tToJ"><strong>Remove Adjacent</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-gray">Stack /Queue</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=s9sVtzW97Ek&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=s9sVtzW97Ek&amp;t=1s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=E_NoLTyWXYQ" class="url-value">https://www.youtube.com/watch?v=E_NoLTyWXYQ</a></td></tr><tr id="1958880d-9596-8169-bde6-eec1e795c833"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/13%201958880d95968169bde6eec1e795c833.html"><span class="icon">🍀</span>13</a></td><td class="cell-tToJ"><strong>Majority Element</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=fdDkTJVKzeI" class="url-value">https://www.youtube.com/watch?v=fdDkTJVKzeI</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=9Q2eYVn9EOc" class="url-value">https://www.youtube.com/watch?v=9Q2eYVn9EOc</a></td></tr><tr id="1958880d-9596-81f4-9ec8-d9eae3c12da0"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/14%201958880d959681f49ec8d9eae3c12da0.html"><span class="icon">🍀</span>14</a></td><td class="cell-tToJ"><strong>Array Next Greater</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-gray">Stack /Queue</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=0CuD-TV7cvw" class="url-value">https://www.youtube.com/watch?v=0CuD-TV7cvw</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=gWEDQFPwYJc" class="url-value">https://www.youtube.com/watch?v=gWEDQFPwYJc</a></td></tr><tr id="1958880d-9596-8118-8bb2-c8e4a6ea14d5"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/15%201958880d959681188bb2c8e4a6ea14d5.html"><span class="icon">🍀</span>15</a></td><td class="cell-tToJ"><strong>MinOperationsXtoY</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">Greedy</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=PuZxIcD_74A&amp;t=3s" class="url-value">https://www.youtube.com/watch?v=PuZxIcD_74A&amp;t=3s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=2c-7zQE2iQU&amp;t=141s" class="url-value">https://www.youtube.com/watch?v=2c-7zQE2iQU&amp;t=141s</a></td></tr><tr id="1958880d-9596-8100-a4dd-d1d11c768e09"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/16%201958880d95968100a4ddd1d11c768e09.html"><span class="icon">🍀</span>16</a></td><td class="cell-tToJ"><strong>MinOperations0toN</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">Greedy</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=4yx56XLZeHc" class="url-value">https://www.youtube.com/watch?v=4yx56XLZeHc</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=5ODK6muM04k" class="url-value">https://www.youtube.com/watch?v=5ODK6muM04k</a></td></tr><tr id="1958880d-9596-817b-b8a4-de3b757aff69"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/17%201958880d9596817bb8a4de3b757aff69.html"><span class="icon">🍀</span>17</a></td><td class="cell-tToJ"><strong>CollectMaxPoints</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=Fjt5mPuTEtI" class="url-value">https://www.youtube.com/watch?v=Fjt5mPuTEtI</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=vI7ao6i4THY" class="url-value">https://www.youtube.com/watch?v=vI7ao6i4THY</a></td></tr><tr id="1958880d-9596-8168-a4dd-c7082079270a"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/18%201958880d95968168a4ddc7082079270a.html"><span class="icon">🍀</span>18</a></td><td class="cell-tToJ"><strong>CollectMaxStartingPoint</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=UuNzFOj9taM" class="url-value">https://www.youtube.com/watch?v=UuNzFOj9taM</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=YcAAjHNgDsc" class="url-value">https://www.youtube.com/watch?v=YcAAjHNgDsc</a></td></tr><tr id="1958880d-9596-8105-a7b6-d843972efe25"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/19%201958880d95968105a7b6d843972efe25.html"><span class="icon">🍀</span>19</a></td><td class="cell-tToJ"><strong>CharsinNStrings</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=PReV0m4msCA" class="url-value">https://www.youtube.com/watch?v=PReV0m4msCA</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=K5NG2Rdtbu0" class="url-value">https://www.youtube.com/watch?v=K5NG2Rdtbu0</a></td></tr><tr id="1958880d-9596-8138-a5e1-cb48915afb5f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/20%201958880d95968138a5e1cb48915afb5f.html"><span class="icon">🍀</span>20</a></td><td class="cell-tToJ"><strong>Staircase</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=oE-QLYhhaRc" class="url-value">https://www.youtube.com/watch?v=oE-QLYhhaRc</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=KO79BUc4tMg&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=KO79BUc4tMg&amp;t=1s</a></td></tr><tr id="1958880d-9596-81c2-b630-ef8d307d2f7f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/21%201958880d959681c2b630ef8d307d2f7f.html"><span class="icon">🍀</span>21</a></td><td class="cell-tToJ"><strong>SubArrSum TwoPointer</strong></td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-red">Two pointer</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=OpJmdGwzsAM&amp;t=7s" class="url-value">https://www.youtube.com/watch?v=OpJmdGwzsAM&amp;t=7s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=c6007z_2oj4" class="url-value">https://www.youtube.com/watch?v=c6007z_2oj4</a></td></tr><tr id="1958880d-9596-8188-820c-e90a1ad3ec19"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/22%201958880d95968188820ce90a1ad3ec19.html"><span class="icon">🍀</span>22</a></td><td class="cell-tToJ">N Rooks</td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-brown">backtracking</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=uDvsL9twFWU&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=uDvsL9twFWU&amp;t=2s</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-815a-9333-f553078f5130"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/23%201958880d9596815a9333f553078f5130.html"><span class="icon">🍀</span>23</a></td><td class="cell-tToJ">Characters in at least N-1 String Values</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=nTkVZAdv0ok" class="url-value">https://www.youtube.com/watch?v=nTkVZAdv0ok</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-8115-aee7-d1eb373d81a6"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/24%201958880d95968115aee7d1eb373d81a6.html"><span class="icon">🍀</span>24</a></td><td class="cell-tToJ">String - Pattern Count KMP Algorithm</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=S50mCVovRwQ&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=S50mCVovRwQ&amp;t=1s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=A6qCbbaoO84" class="url-value">https://www.youtube.com/watch?v=A6qCbbaoO84</a></td></tr><tr id="1958880d-9596-81bc-8485-c86ff507e6e6"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/25%201958880d959681bc8485c86ff507e6e6.html"><span class="icon">🍀</span>25</a></td><td class="cell-tToJ">Valid Mix of String Values</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=F5AnXSpwYG4&amp;t=10s" class="url-value">https://www.youtube.com/watch?v=F5AnXSpwYG4&amp;t=10s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=NRm7bdHDhOs&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=NRm7bdHDhOs&amp;t=1s</a></td></tr><tr id="1958880d-9596-8166-bd6b-f10cf7ccabd7"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/26%201958880d95968166bd6bf10cf7ccabd7.html"><span class="icon">🍀</span>26</a></td><td class="cell-tToJ">Longest Common Signal</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=oQbU2ws1lWg" class="url-value">https://www.youtube.com/watch?v=oQbU2ws1lWg</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=p7n6pxLVo3s" class="url-value">https://www.youtube.com/watch?v=p7n6pxLVo3s</a></td></tr><tr id="1958880d-9596-81f1-baad-d3b4cfe02898"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/27%201958880d959681f1baadd3b4cfe02898.html"><span class="icon">🍀</span>27</a></td><td class="cell-tToJ">Longest Substring - Equal Alphabets &amp; Digits</td><td class="cell-lCd_"><span class="selected-value select-value-color-purple">Arrays</span><span class="selected-value select-value-color-blue">String</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=R3KFda5KpEY&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=R3KFda5KpEY&amp;t=2s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=KCKZ2xkQgM0" class="url-value">https://www.youtube.com/watch?v=KCKZ2xkQgM0</a></td></tr><tr id="1958880d-9596-81ea-b7c2-d761918687e7"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/28%201958880d959681eab7c2d761918687e7.html"><span class="icon">🍀</span>28</a></td><td class="cell-tToJ">Robot - Stair Climbing</td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=oE-QLYhhaRc" class="url-value">https://www.youtube.com/watch?v=oE-QLYhhaRc</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=KO79BUc4tMg" class="url-value">https://www.youtube.com/watch?v=KO79BUc4tMg</a></td></tr><tr id="1958880d-9596-81bd-8851-df193e8661d3"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/29%201958880d959681bd8851df193e8661d3.html"><span class="icon">🍀</span>29</a></td><td class="cell-tToJ">Stair Climbing - Damaged Stairs</td><td class="cell-lCd_"><span class="selected-value select-value-color-green">Dynamic Programming</span><span class="selected-value select-value-color-gray">Loops</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=xXn-rTWzpHs" class="url-value">https://www.youtube.com/watch?v=xXn-rTWzpHs</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-8142-9c1b-db99abd6d1de"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/30%201958880d959681429c1bdb99abd6d1de.html"><span class="icon">🍀</span>30</a></td><td class="cell-tToJ">Permutations - String Characters</td><td class="cell-lCd_"><span class="selected-value select-value-color-blue">String</span><span class="selected-value select-value-color-brown">backtracking</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=4QoGYsZOeKA&amp;t=3s" class="url-value">https://www.youtube.com/watch?v=4QoGYsZOeKA&amp;t=3s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=eQ4HdQlUVjc" class="url-value">https://www.youtube.com/watch?v=eQ4HdQlUVjc</a></td></tr><tr id="1958880d-9596-8197-a44c-f5cc1284ea93"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/31%201958880d95968197a44cf5cc1284ea93.html"><span class="icon">🍀</span>31</a></td><td class="cell-tToJ">Valid String Mix Reverse</td><td class="cell-lCd_"><span class="selected-value select-value-color-blue">String</span><span class="selected-value select-value-color-brown">backtracking</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=xemuuSGVLwU" class="url-value">https://www.youtube.com/watch?v=xemuuSGVLwU</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-8116-9fa8-e9d9b9ce78e0"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/32%201958880d959681169fa8e9d9b9ce78e0.html"><span class="icon">🍀</span>32</a></td><td class="cell-tToJ">Social Media Leader</td><td class="cell-lCd_"><span class="selected-value select-value-color-pink">2D Matrix</span><span class="selected-value select-value-color-green">Dynamic Programming</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=Nafe075kYT8" class="url-value">https://www.youtube.com/watch?v=Nafe075kYT8</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=bkaB6fCXj14" class="url-value">https://www.youtube.com/watch?v=bkaB6fCXj14</a></td></tr><tr id="1958880d-9596-813b-9811-cef77c97ea91"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/33%201958880d9596813b9811cef77c97ea91.html"><span class="icon">🍀</span>33</a></td><td class="cell-tToJ">Stair Climbing - Slippery stairs</td><td class="cell-lCd_"></td><td class="cell-Jqk="></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=WLHVXn0tlzk" class="url-value">https://www.youtube.com/watch?v=WLHVXn0tlzk</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=N4nAZmHmFzA" class="url-value">https://www.youtube.com/watch?v=N4nAZmHmFzA</a></td></tr><tr id="1958880d-9596-817d-a383-e6fc991e761f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/34%201958880d9596817da383e6fc991e761f.html">34</a></td><td class="cell-tToJ">Path Exists from Source to Destination Cell</td><td class="cell-lCd_"><span class="selected-value select-value-color-blue">DFS</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=vwyE4puUpw0" class="url-value">https://www.youtube.com/watch?v=vwyE4puUpw0</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=BRpSkgvb2OU&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=BRpSkgvb2OU&amp;t=1s</a></td></tr><tr id="1958880d-9596-81f8-aa44-fa15d5dd0f3c"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/35%201958880d959681f8aa44fa15d5dd0f3c.html">35</a></td><td class="cell-tToJ">Island Count</td><td class="cell-lCd_"><span class="selected-value select-value-color-blue">DFS</span></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=Srq5PsC9M-c&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=Srq5PsC9M-c&amp;t=2s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=8GoKStp3Bxw&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=8GoKStp3Bxw&amp;t=2s</a></td></tr><tr id="1958880d-9596-81c1-8dea-f73984cd8cfd"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/36%201958880d959681c18deaf73984cd8cfd.html">36</a></td><td class="cell-tToJ">Largest Possible Odd Integer</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=4bhOb1kgbCM" class="url-value">https://www.youtube.com/watch?v=4bhOb1kgbCM</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=zRlyOhLxCro" class="url-value">https://www.youtube.com/watch?v=zRlyOhLxCro</a></td></tr><tr id="1958880d-9596-81bd-be35-d52b511464f8"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/37%201958880d959681bdbe35d52b511464f8.html">37</a></td><td class="cell-tToJ">Stock Buy &amp; Sell Once - Maximum Profit</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=tXf4Vml2FYM" class="url-value">https://www.youtube.com/watch?v=tXf4Vml2FYM</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=KwibR_lHWPY" class="url-value">https://www.youtube.com/watch?v=KwibR_lHWPY</a></td></tr><tr id="1958880d-9596-81c9-8737-d9aa7ee79b04"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/38%201958880d959681c98737d9aa7ee79b04.html">38</a></td><td class="cell-tToJ">Stock Buy &amp; Sell Multiple Times - Maximum Profit</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=ISwjfVrNOWQ" class="url-value">https://www.youtube.com/watch?v=ISwjfVrNOWQ</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=JQaNfHTeYv8" class="url-value">https://www.youtube.com/watch?v=JQaNfHTeYv8</a></td></tr><tr id="1958880d-9596-81e0-846b-e08c306c7c4f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/39%201958880d959681e0846be08c306c7c4f.html">39</a></td><td class="cell-tToJ">Maximum Sum - K*K Sub-Matrix</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=c033YjJMO0w" class="url-value">https://www.youtube.com/watch?v=c033YjJMO0w</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=8lWruKXUcVU&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=8lWruKXUcVU&amp;t=2s</a></td></tr><tr id="1958880d-9596-8179-ad73-f3f8f3faacd8"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/40%201958880d95968179ad73f3f8f3faacd8.html">40</a></td><td class="cell-tToJ">Minimum Sum - K*K Sub-Matrix</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=gCwlR3msSEM" class="url-value">https://www.youtube.com/watch?v=gCwlR3msSEM</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-81a2-99b5-e0cfb50a6b0e"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/41%201958880d959681a299b5e0cfb50a6b0e.html">41</a></td><td class="cell-tToJ">Smallest Possible Odd Integer</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=gjW1nuv6tno" class="url-value">https://www.youtube.com/watch?v=gjW1nuv6tno</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-81b2-bb00-c89fa24b4778"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/42%201958880d959681b2bb00c89fa24b4778.html">42</a></td><td class="cell-tToJ">Combination Zero Sum</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=FsW_AJZxD1w&amp;t=3s" class="url-value">https://www.youtube.com/watch?v=FsW_AJZxD1w&amp;t=3s</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-81e3-9802-f5a1a193e0a2"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/43%201958880d959681e39802f5a1a193e0a2.html">43</a></td><td class="cell-tToJ">DP - Array Elements Equal Left &amp; Right Sum</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=F1SKWOg6GjA" class="url-value">https://www.youtube.com/watch?v=F1SKWOg6GjA</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=KkuRz_eIc4Q" class="url-value">https://www.youtube.com/watch?v=KkuRz_eIc4Q</a></td></tr><tr id="1958880d-9596-814d-b9e4-f22207634ee2"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/44%201958880d9596814db9e4f22207634ee2.html">44</a></td><td class="cell-tToJ">Iterations Count All Zero</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=ZeLqTTEVlTc" class="url-value">https://www.youtube.com/watch?v=ZeLqTTEVlTc</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=6Bg4wugczH0" class="url-value">https://www.youtube.com/watch?v=6Bg4wugczH0</a></td></tr><tr id="1958880d-9596-81c1-9d2b-dc8bdd9c225e"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/45%201958880d959681c19d2bdc8bdd9c225e.html">45</a></td><td class="cell-tToJ">Minimum Swaps - Ascending Order</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=B8GHzNCwlzs&amp;t=27s" class="url-value">https://www.youtube.com/watch?v=B8GHzNCwlzs&amp;t=27s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=NyKV8IgB8Mc" class="url-value">https://www.youtube.com/watch?v=NyKV8IgB8Mc</a></td></tr><tr id="1958880d-9596-8136-bf81-d815e168dcfe"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/46%201958880d95968136bf81d815e168dcfe.html">46</a></td><td class="cell-tToJ">Minimum Swaps - Descending Order</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=ZSAJLor3hSI" class="url-value">https://www.youtube.com/watch?v=ZSAJLor3hSI</a></td><td class="cell-jbJh"></td></tr><tr id="1958880d-9596-8172-8b7b-f38477cc4b49"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/47%201958880d959681728b7bf38477cc4b49.html">47</a></td><td class="cell-tToJ">Non-Measurable Smallest Weight</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=xhUaf69VB9Y" class="url-value">https://www.youtube.com/watch?v=xhUaf69VB9Y</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=4sBI8lhJzXw" class="url-value">https://www.youtube.com/watch?v=4sBI8lhJzXw</a></td></tr><tr id="1958880d-9596-81ae-a705-ebcfb6f48270"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/48%201958880d959681aea705ebcfb6f48270.html">48</a></td><td class="cell-tToJ">Permutation Nearest Value</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-blue">⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=W04c2M5h5hI" class="url-value">https://www.youtube.com/watch?v=W04c2M5h5hI</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=x0kCwTkeTG0" class="url-value">https://www.youtube.com/watch?v=x0kCwTkeTG0</a></td></tr><tr id="1958880d-9596-81b8-834b-d3fcbf9ab4bf"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/49%201958880d959681b8834bd3fcbf9ab4bf.html">49</a></td><td class="cell-tToJ">String Characters - Combinations Sorted</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=dfKB6oVb0DM&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=dfKB6oVb0DM&amp;t=1s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=q2tcqbCDvlY" class="url-value">https://www.youtube.com/watch?v=q2tcqbCDvlY</a></td></tr><tr id="1958880d-9596-811f-ab14-c33c9a3e7477"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/50%201958880d9596811fab14c33c9a3e7477.html">50</a></td><td class="cell-tToJ">Sudoku Validity</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=wVnvzXClo8Y" class="url-value">https://www.youtube.com/watch?v=wVnvzXClo8Y</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=479p377yrE4" class="url-value">https://www.youtube.com/watch?v=479p377yrE4</a></td></tr><tr id="1958880d-9596-813c-a72d-c6a8e4d111e8"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/51%201958880d9596813ca72dc6a8e4d111e8.html">51</a></td><td class="cell-tToJ">Solve Sudoku</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=ziChV7_MFos" class="url-value">https://www.youtube.com/watch?v=ziChV7_MFos</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=2MWRITy9_Ac" class="url-value">https://www.youtube.com/watch?v=2MWRITy9_Ac</a></td></tr><tr id="1958880d-9596-814e-ba61-d6afafbe22f6"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/52%201958880d9596814eba61d6afafbe22f6.html">52</a></td><td class="cell-tToJ">Word Search in Matrix</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=YGk1yAeOUsw&amp;t=22s" class="url-value">https://www.youtube.com/watch?v=YGk1yAeOUsw&amp;t=22s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=_GIT1qHUy8Y&amp;t=10s" class="url-value">https://www.youtube.com/watch?v=_GIT1qHUy8Y&amp;t=10s</a></td></tr><tr id="1958880d-9596-812b-ac86-c3b4e250f9ef"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/53%201958880d9596812bac86c3b4e250f9ef.html">53</a></td><td class="cell-tToJ">Selling Wine Bottles</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=EEU6QV3tQ5k" class="url-value">https://www.youtube.com/watch?v=EEU6QV3tQ5k</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=6SADv2EaoIw" class="url-value">https://www.youtube.com/watch?v=6SADv2EaoIw</a></td></tr><tr id="1958880d-9596-8129-9edb-e7c0fa768961"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/54%201958880d959681299edbe7c0fa768961.html">54</a></td><td class="cell-tToJ">Street Travel Count</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=wdeJvXF6YRY&amp;t=1s" class="url-value">https://www.youtube.com/watch?v=wdeJvXF6YRY&amp;t=1s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=2Xc955dNIys" class="url-value">https://www.youtube.com/watch?v=2Xc955dNIys</a></td></tr><tr id="1958880d-9596-812c-8b36-f9231e6eb1bd"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/55%201958880d9596812c8b36f9231e6eb1bd.html">55</a></td><td class="cell-tToJ">Vendor Maximum Profit</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=kpoXaH_ZRbc" class="url-value">https://www.youtube.com/watch?v=kpoXaH_ZRbc</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=_JGgKyUnQWA" class="url-value">https://www.youtube.com/watch?v=_JGgKyUnQWA</a></td></tr><tr id="1958880d-9596-810e-ae37-f58cf74b415d"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/56%201958880d9596810eae37f58cf74b415d.html">56</a></td><td class="cell-tToJ">Corona Virus</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=Dfaj2vA6Vi0&amp;t=8s" class="url-value">https://www.youtube.com/watch?v=Dfaj2vA6Vi0&amp;t=8s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=Cs9P7CP-JFI&amp;t=13s" class="url-value">https://www.youtube.com/watch?v=Cs9P7CP-JFI&amp;t=13s</a></td></tr><tr id="1958880d-9596-8188-96f9-ff830d6d28b6"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/57%201958880d9596818896f9ff830d6d28b6.html">57</a></td><td class="cell-tToJ">Intelligent Chef</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=QQHndo3l_lU" class="url-value">https://www.youtube.com/watch?v=QQHndo3l_lU</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=WRim5PcB6gs" class="url-value">https://www.youtube.com/watch?v=WRim5PcB6gs</a></td></tr><tr id="1958880d-9596-81d0-a29f-dc0556a0b91f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/58%201958880d959681d0a29fdc0556a0b91f.html">58</a></td><td class="cell-tToJ">Largest Square Sub Matrix with 1s</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=rdig1RbL3xs" class="url-value">https://www.youtube.com/watch?v=rdig1RbL3xs</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=TdWHbwdjI24" class="url-value">https://www.youtube.com/watch?v=TdWHbwdjI24</a></td></tr><tr id="1958880d-9596-818a-b9b4-c24fc02da418"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/59%201958880d9596818ab9b4c24fc02da418.html">59</a></td><td class="cell-tToJ">Max Coins - Bottom Row Cannot Pick</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-blue">⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=JMRDYzTB4iE" class="url-value">https://www.youtube.com/watch?v=JMRDYzTB4iE</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=2vkj5ZcoykQ" class="url-value">https://www.youtube.com/watch?v=2vkj5ZcoykQ</a></td></tr><tr id="1958880d-9596-8159-a6dd-e131a7d351f3"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/60%201958880d95968159a6dde131a7d351f3.html">60</a></td><td class="cell-tToJ">Find Single Value Repeated Odd Times</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=SuXK6X4JgbQ" class="url-value">https://www.youtube.com/watch?v=SuXK6X4JgbQ</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=W-8zZe1KQQ4" class="url-value">https://www.youtube.com/watch?v=W-8zZe1KQQ4</a></td></tr><tr id="1958880d-9596-8113-b605-f83e01cc4a2b"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/61%201958880d95968113b605f83e01cc4a2b.html">61</a></td><td class="cell-tToJ">Toll Gate Collection</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=x0wY2-S5-Rs&amp;t=6s" class="url-value">https://www.youtube.com/watch?v=x0wY2-S5-Rs&amp;t=6s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=7GoR_NOgkMA" class="url-value">https://www.youtube.com/watch?v=7GoR_NOgkMA</a></td></tr><tr id="1958880d-9596-815a-9a83-c8a7080dca2e"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/62%201958880d9596815a9a83c8a7080dca2e.html">62</a></td><td class="cell-tToJ">Word Break</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=q85GqO2FbdI" class="url-value">https://www.youtube.com/watch?v=q85GqO2FbdI</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=c0UUcHNW4Ns" class="url-value">https://www.youtube.com/watch?v=c0UUcHNW4Ns</a></td></tr><tr id="1958880d-9596-8154-ac29-ee684f5a8442"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/63%201958880d95968154ac29ee684f5a8442.html">63</a></td><td class="cell-tToJ">Wildcard Pattern Matching</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=g7KXWiiOtbA&amp;t=8s" class="url-value">https://www.youtube.com/watch?v=g7KXWiiOtbA&amp;t=8s</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=BotnSue5_eA" class="url-value">https://www.youtube.com/watch?v=BotnSue5_eA</a></td></tr><tr id="1958880d-9596-81a6-8b2d-f7cc84f63f59"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/64%201958880d959681a68b2df7cc84f63f59.html">64</a></td><td class="cell-tToJ">Pet Store Dogs</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=CMu0yUCqgAs" class="url-value">https://www.youtube.com/watch?v=CMu0yUCqgAs</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=8TcNk0E2VN4" class="url-value">https://www.youtube.com/watch?v=8TcNk0E2VN4</a></td></tr><tr id="1958880d-9596-81b9-bb77-e83b19a2e483"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/65%201958880d959681b9bb77e83b19a2e483.html">65</a></td><td class="cell-tToJ">Minimum Edit Distance Two Strings</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=lizkwM1gmw4" class="url-value">https://www.youtube.com/watch?v=lizkwM1gmw4</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=0xLa7W6FFsw" class="url-value">https://www.youtube.com/watch?v=0xLa7W6FFsw</a></td></tr><tr id="1958880d-9596-81ad-a73c-e83409fd11ee"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/66%201958880d959681ada73ce83409fd11ee.html">66</a></td><td class="cell-tToJ">Single Source Shortest Path</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-purple">⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=5YHc2sR8S4o" class="url-value">https://www.youtube.com/watch?v=5YHc2sR8S4o</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=L9hTD6Ck7Y4" class="url-value">https://www.youtube.com/watch?v=L9hTD6Ck7Y4</a></td></tr><tr id="1958880d-9596-8195-98b0-d60d15233312"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/67%201958880d9596819598b0d60d15233312.html">67</a></td><td class="cell-tToJ">Photograph Height</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=fPWBHcIXifs" class="url-value">https://www.youtube.com/watch?v=fPWBHcIXifs</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=zM56le6VErA" class="url-value">https://www.youtube.com/watch?v=zM56le6VErA</a></td></tr><tr id="1958880d-9596-810f-a2a6-fe6d72064d94"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/68%201958880d9596810fa2a6fe6d72064d94.html">68</a></td><td class="cell-tToJ">Minimum Jumps to Reach End</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=JUH4Ayb373g" class="url-value">https://www.youtube.com/watch?v=JUH4Ayb373g</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=Yhxzu9S75Bw" class="url-value">https://www.youtube.com/watch?v=Yhxzu9S75Bw</a></td></tr><tr id="1958880d-9596-817d-b5c3-f9a5b27a6003"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/69%201958880d9596817db5c3f9a5b27a6003.html">69</a></td><td class="cell-tToJ">Browsing Center Computers</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-default">⭐⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=y1tyNq0eKaw" class="url-value">https://www.youtube.com/watch?v=y1tyNq0eKaw</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=01du4OO3RXA&amp;t=2s" class="url-value">https://www.youtube.com/watch?v=01du4OO3RXA&amp;t=2s</a></td></tr><tr id="1958880d-9596-81ac-8864-d2c807accc8f"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/70%201958880d959681ac8864d2c807accc8f.html">70</a></td><td class="cell-tToJ"><strong>LongestPalindromicSubString</strong></td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-blue">⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=tMCQB5r2swY&amp;t=235s" class="url-value">https://www.youtube.com/watch?v=tMCQB5r2swY&amp;t=235s</a></td></tr><tr id="1958880d-9596-816c-a42f-cc5808ce4f28"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/71%201958880d9596816ca42fcc5808ce4f28.html">71</a></td><td class="cell-tToJ">Palindromic Partition</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=HK1qCy6FYdo" class="url-value">https://www.youtube.com/watch?v=HK1qCy6FYdo</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=1ajrr9Yy-PU&amp;t=5s" class="url-value">https://www.youtube.com/watch?v=1ajrr9Yy-PU&amp;t=5s</a></td></tr><tr id="1958880d-9596-8180-80d3-ff636dab1b8b"><td class="cell-title"><a href="Arther%E2%80%99s%20Coding%20Notes%202%201958880d959680cbb9f2f7117ba1f285/Days%201958880d959681fe9958dd84dcf6eb92/72%201958880d9596818080d3ff636dab1b8b.html">72</a></td><td class="cell-tToJ">String Permutation</td><td class="cell-lCd_"></td><td class="cell-Jqk="><span class="selected-value select-value-color-yellow">⭐⭐⭐⭐</span></td><td class="cell-loIk"><span class="selected-value select-value-color-brown">java</span></td><td class="cell-oh]n"><a href="https://www.youtube.com/watch?v=dmzPo0meGyQ" class="url-value">https://www.youtube.com/watch?v=dmzPo0meGyQ</a></td><td class="cell-jbJh"><a href="https://www.youtube.com/watch?v=iSj7a1Qt6cc&amp;t=226s" class="url-value">https://www.youtube.com/watch?v=iSj7a1Qt6cc&amp;t=226s</a></td></tr><tr id="1958880d-9596-81b5-b9b4-f4b95b03aaa0"><td  class="cell-oh]n"></td><td class="cell-jbJh"></td></tr></tbody></table><br/><br/></div><p id="1958880d-9596-81c9-a0ac-dda7baeac353" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
